@@ -1,28 +1,15 @@
 # 🚌 버스별 수요도 분석
 
 ## 📋 목차
-1. [프로젝트 개요](#1-project-overview)
-   - [Background and Goals](#11-background-and-goals)
-   - [Problem Statement](#12-problem-statement)
-   - [Data Collection and Analysis Overview](#13-data-collection-and-analysis-overview)
-2. [데이터 수집 및 전처리](#2-data-collection-and-preprocessing)
-   - [Data Collection Methods and Tools](#21-data-collection-methods-and-tools)
-   - [Data Structure and Key Variables](#22-data-structure-and-key-variables)
-   - [Data Cleaning and Processing](#23-data-cleaning-and-processing)
-3. [데이터 분석 및 결과](#3-data-analysis-and-results)
-   - [Time-based Passenger Usage per Route](#31-time-based-passenger-usage-per-route)
-   - [Ranking Analysis Across All Routes](#32-ranking-analysis-across-all-routes)
-     - [Detailed Rank Visualization](#321-detailed-rank-visualization)
-     - [Simplified Rank Visualization](#322-simplified-rank-visualization)
-   - [Map Visualization Using Folium](#33-map-visualization-using-folium)
-     - [Station Marking by Passing Routes](#331-station-marking-by-passing-routes)
-     - [Route Visualization with Line Styling](#332-route-visualization-with-line-styling)
-   - [Comparison of Headways by Route Ranking](#34-comparison-of-headways-by-route-ranking)
-4. [결론 및 시사점](#4-conclusions-and-implications)
-   - [Key Findings](#41-key-findings)
-   - [Policy Implications](#42-policy-implications)
-   - [Future Work and Improvements](#43-future-work-and-improvements)
+1. [프로젝트 개요](#1-프로젝트-개요)
 
+2. [데이터 수집](#2-데이터-수집)
+
+3. [데이터 전처리](#3-데이터-전처리)
+
+4. [데이터 분석 및 시각화](#4-데이터-분석-및-시각화)
+
+5. [결론](#5-결론)
 ---
 
 ## 1. 프로젝트 개요
@@ -91,7 +78,7 @@
   - 노선별 정류소 데이터(3번)에 위치 데이터 병합
 - 결과 : 정류소와 노선 데이터를 통합한 최종 데이터 생성
 
-### [데이터 전처리 과정](#2./Bus_Data/데이터가공/ipynb 전처리/데이터 전처리.ipynb)
+### [데이터 전처리 과정](Bus_Data/데이터가공/ipynb%20전처리/데이터%20전처리.ipynb)
 ---
 
 ## 4. 데이터 분석 및 시각화
