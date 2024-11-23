@@ -12,7 +12,7 @@ def custom_time_formatter(x, pos):
     return f"{hour:02}:00 - {hour+1:02}:00" if hour < 23 else "23:00 - 24:00"
 
 # CSV 파일 읽기
-df = pd.read_csv('23_성남시_일반노선별_시간대_이용객순위_평일_배차포함_100x.csv', parse_dates=False, encoding='utf-8-sig')
+df = pd.read_csv('23_성남시_일반노선별_시간대_이용객순위_평일_순위수정.csv', parse_dates=False, encoding='utf-8-sig')
 df['시간'] = df['시간'].apply(lambda x: x.replace('시~', ':00 - ').replace('시', ':00'))
 
 # 그래프 설정
@@ -48,36 +48,32 @@ for month in range(1, 13):
     # 시작 시간 기준으로 정렬
     bottom_3_routes = bottom_3_routes.sort_values(by='시작시간')
 
+    # 하나의 plot에서 상위와 하위 3개 노선 표시하기 (실선 및 점선)
+    fig, ax = plt.subplots(figsize=(10, 6))
 
-    # 그래프 설정
-    plt.figure(figsize=(12, 8))
-
-    # 상위 3개 노선 점 찍기
+    # 상위 3개 노선 시각화 (실선)
     for route in top_3_routes['노선'].unique():
         route_data = top_3_routes[top_3_routes['노선'] == route]
         x = route_data['시작시간']
-        y = route_data['배차간격(평일)(분)']  # 배차 간격으로 변경
-
-        # 상위 3개는 원형 마커로 표시
-        plt.scatter(x, y, label=f"Top: {route} (Rank: {route_data['순위'].iloc[0]})", s=100, edgecolors='w', linewidth=2, marker='o')
-
-        # 점 위에 배차 간격 숫자 표시
+        y = route_data['배차간격(평일)(분)']
+        
+        # 라인 추가 (실선)
+        ax.plot(x, y, label=f"Top: {route} (Rank: {route_data['순위'].iloc[0]})", marker='o', markersize=8, linewidth=2)
+        ax.scatter(x, y, s=100, edgecolors='w', linewidth=2, marker='o')  # 점 추가
         for i in range(len(x)):
-            plt.text(x.iloc[i], y.iloc[i], f'{y.iloc[i]}', ha='center', va='bottom', fontsize=12, color='black')
+            ax.text(x.iloc[i], y.iloc[i], f'{y.iloc[i]}', ha='center', va='bottom', fontsize=12, color='black')
 
-    # 하위 3개 노선 점 찍기
+    # 하위 3개 노선 시각화 (점선)
     for route in bottom_3_routes['노선'].unique():
         route_data = bottom_3_routes[bottom_3_routes['노선'] == route]
         x = route_data['시작시간']
-        y = route_data['배차간격(평일)(분)']  # 배차 간격으로 변경
-
-        # 하위 3개는 사각형 마커로 표시
-        plt.scatter(x, y, label=f"Bottom: {route} (Rank: {route_data['순위'].iloc[0]})", s=100, edgecolors='w', linewidth=2, marker='s')
-
-        # 점 위에 배차 간격 숫자 표시
+        y = route_data['배차간격(평일)(분)']
+        
+        # 라인 추가 (점선)
+        ax.plot(x, y, label=f"Bottom: {route} (Rank: {route_data['순위'].iloc[0]})", marker='s', markersize=8, linewidth=2, linestyle='--')
+        ax.scatter(x, y, s=100, edgecolors='w', linewidth=2, marker='s')  # 점 추가
         for i in range(len(x)):
-            plt.text(x.iloc[i], y.iloc[i], f'{y.iloc[i]}', ha='center', va='bottom', fontsize=12, color='black')
-
+            ax.text(x.iloc[i], y.iloc[i], f'{y.iloc[i]}', ha='center', va='bottom', fontsize=12, color='black')
 
     # 그래프 제목과 레이블 설정
     plt.title(f"{month} Month - Bus Routes Dispatch Interval", fontsize=16)
