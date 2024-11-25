@@ -111,7 +111,7 @@
   - Folium 지도 시각화를 사용하여 각 노선이 지나가는 정류소를 Line으로 표시
   - 이용객 수가 많고 배차 간격이 짧은 노선의 라인을 두껍게 처리하여 트래픽을 시각적으로 표현
   - 지도 상에서 각 노선의 위치와 통행량을 한눈에 파악할 수 있도록 시각화
-![image](https://github.com/user-attachments/assets/1d527699-2213-45a5-9e72-079e2c30b3cd)
+![image](https://github.com/user-attachments/assets/6d16d619-bbc3-44a9-9615-dd1c092e299b)
 ### [데이터 시각화 과정](./데이터%20시각화.ipynb)
 ---
 
